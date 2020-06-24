@@ -22,7 +22,7 @@ CREATE TABLE liquidacion(
 --CASO 2
 CREATE TABLE Alumno(
 		Rut VARCHAR(25),
-		Nombre VARCHAR(100),
+		Nombre VARCHAR(100) NOT NULL,
 		Curso VARCHAR(20),
 		PRIMARY KEY(Rut));
 

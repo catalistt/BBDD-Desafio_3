@@ -23,20 +23,20 @@ CREATE TABLE liquidacion(
 CREATE TABLE Alumno(
 		Rut VARCHAR(25),
 		Nombre VARCHAR(100) NOT NULL,
-		Curso VARCHAR(20),
+		Curso VARCHAR(20) NOT NULL,
 		PRIMARY KEY(Rut));
 
 CREATE TABLE Profesor(
 		id_profesor VARCHAR(25),
-		Nombre VARCHAR (100),
-		Departamento VARCHAR(20),
+		Nombre VARCHAR (100) NOT NULL,
+		Departamento VARCHAR(20) NOT NULL,
 		PRIMARY KEY(id_profesor));
 
 CREATE TABLE Prueba(
 		id_prueba VARCHAR(25),
-		Profesor_revision VARCHAR(25),
-		Alumno_relacionado VARCHAR(25),
-		Puntaje FLOAT,
+		Profesor_revision VARCHAR(25) NOT NULL,
+		Alumno_relacionado VARCHAR(25) NOT NULL,
+		Puntaje INT NOT NULL,
 		FOREIGN KEY(Profesor_revision) REFERENCES
 		Profesor(id_profesor),
 		FOREIGN KEY(Alumno_relacionado) REFERENCES

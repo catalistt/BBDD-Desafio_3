@@ -1,13 +1,20 @@
 --CASO 01
---NO SE CONSIDERA RELEVANTE AÑADIR UNA TABLA DE DEPARTAMENTO
---PORQUE SOLO TIENE UN ATRIBUTO (EL NOMBRE)
+--Se considera el nombre como UN SOLO DATO, al NO ESPECIFICAR que corresponde a un atributo compuesto.
+--Cada trabajador solo tiene UNA DIRECCIÓN, por lo que actua como ATRIBUTO, NO COMO ENTIDAD.
+
+CREATE TABLE Departamento(
+		Id_departamento SERIAL,
+		Nombre VARCHAR(25) NOT NULL,
+		PRIMARY KEY(Id_departamento));
 
 CREATE TABLE trabajador(
 		Rut VARCHAR(25),
 		Nombre VARCHAR(100) NOT NULL,
 		Direccion VARCHAR(100) NOT NULL,
-		Departamento VARCHAR(20) NOT NULL,
-		PRIMARY KEY(Rut));
+		Departamento INT NOT NULL,
+		PRIMARY KEY(Rut),
+		FOREIGN KEY(Departamento) REFERENCES
+		Departamento(id_departamento));
 
 CREATE TABLE liquidacion(
 		Id_liquidacion SERIAL,
@@ -20,11 +27,19 @@ CREATE TABLE liquidacion(
 -------------------------------------------------------------
 
 --CASO 2
+
+CREATE TABLE Curso(
+		id_curso SERIAL,
+		Nombre_curso VARCHAR(20) NOT NULL,
+		PRIMARY KEY(id_curso));
+			   
 CREATE TABLE Alumno(
 		Rut VARCHAR(25),
 		Nombre VARCHAR(100) NOT NULL,
-		Curso VARCHAR(20) NOT NULL,
-		PRIMARY KEY(Rut));
+		Curso INT NOT NULL,
+		PRIMARY KEY(Rut),
+		FOREIGN KEY(Curso) REFERENCES
+		Curso(id_curso));
 
 CREATE TABLE Profesor(
 		id_profesor VARCHAR(25),
@@ -41,6 +56,7 @@ CREATE TABLE Prueba(
 		Profesor(id_profesor),
 		FOREIGN KEY(Alumno_relacionado) REFERENCES
 		Alumno(Rut));		
+		       
 
 
 
